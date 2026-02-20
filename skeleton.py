@@ -36,5 +36,9 @@ def threshold(grayscale_image: ndarray, threshold: float) -> ndarray:
 
 if __name__ == '__main__':
     image: ndarray = read_image('Elfers-Juergen.jpg')
-    thresholded_image = threshold(image, 0.5)
-    write_image('Elfers-Juergen-Thresholded.jpg', thresholded_image)
+    thresholds = [0.2, 0.5, 0.8, 0.9]
+    for t in thresholds:
+        thresholded_image = threshold(image, t)
+        output_filename = f'Elfers-Juergen-Thresholded-{int(t*100)}.jpg'
+        write_image(output_filename, thresholded_image)
+        print(f'Threshold {t}: gespeichert als {output_filename}')
